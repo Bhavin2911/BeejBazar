@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container text-center">
+<div style="background-color: #035715;color: #fff">
+	
+<h1 class="pt-2 pb-2 mb-4"><b>{{check_zone}}</b></h1>
+</div>
+{% for rotate_data in valid_data %}
+
+	<a href="/marketprice/marketprice_product/{{rotate_data.city_id}}" class="font-weight-bold" style="color: #035715;">{{rotate_data.city_name}}</a>
+	<hr class="mt-4 mb-4">
+{% endfor %}
+
+</div>
+
+{% endblock body %}

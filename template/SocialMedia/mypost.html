@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css  %}
+
+
+.userimage{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+}
+.pst{
+  width:330px;
+  height:220px;
+  
+} 
+
+.likes{
+  border-right: 1px solid black;
+}
+.comment{
+  border-right: 1px solid black;
+}
+ .mypost i
+     {
+      margin: 10px;
+      color:#035715;
+     }
+     .mypost a
+     {
+      text-decoration:  none;
+      color:black;
+     }
+{% endblock css  %}
+
+
+{% block body  %}
+<div class="text-center mb-5">
+  <h1 class="font-weight-bold text-dark" style="letter-spacing: 5px">MY POSTS</h1>
+</div>
+
+{% if posts %}
+{% for post in posts %}
+<div class="container mt-4 mb-5 text-center col-lg-4 col-md-4" id="{{post.post_id}}">
+  <div class="card ">
+<h5 class="card-header">
+      <span>
+      <img src="{% static 'project_images/logo-pre.png' %}" class="rounded float-left d-block" style="width: 40px">
+      </span>
+      <a href="{% url 'user_profile' post.user %}" class="text-success float-left ml-2">{{post.user}} </a>
+      <small class="float-right text-muted">{{post.date.date}}</small>
+      </h5>
+
+    <div class="card-body text-center">
+      <h5 class="card-title">{{post.caption}}</h5>
+      {% if post.image %}
+        <img src="{{post.image.url}}" alt="Image could not display." style="width:100%">
+      {% endif %}
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-success  like " id="{{ post.post_id }}">
+        {% if i in liked_post %}
+        <a href="/socialmedia/like_dislike_post"  style="color:white;" id="likebtn{{post.post_id}}">Liked</a>
+        {% else %}
+        <a href="/socialmedia/like_dislike_post"  style="color:white;" id="likebtn{{post.post_id}}">Like</a>
+        {% endif %}
+      </button>      
+      <a href="/socialmedia/postcomment/{{post.post_id}}" class="btn btn-warning">Comment</a>
+      <a id="sharebtn{{post.post_id}}" class="btn btn-primary text-light">Share</a>
+      {% if post.user == request.user %}
+      <a href="{% url 'del_post' post.post_id %}" class="delete btn btn-danger" id="{{post.post_id}}">Delete</a>
+      {% endif %}
+    </div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+<div class=" container text-center mt-5 mb-5">
+  <h3>Pls... Add Some <b>POSTS</b></h3>
+</div>
+{% endif %}
+
+{% endblock body  %}
+
+{% block js %}
+<script>
+  $(document).ready(function()
+  {
+    $('.delete').click(function(e)
+    {
+      var id=this.id;
+      var href=this.href;
+      e.preventDefault();
+      $.ajax(
+      {
+          url:href,
+          data:{},
+      });
+      $("#"+id).fadeOut(1000);
+    });  
+    $("#follow").click(function(e)
+    {
+      e.preventDefault();
+      var href=this.href;
+      $.ajax({
+        url:href,
+      success:function(response)
+      {
+        if(response["isfollowing"])
+        {
+          $('#follow').html("Unfollow");
+        }
+        else
+        {
+          $('#follow').html("Follow");
+        } 
+      }
+      })
+    })
+
+
+    $(".like").click(function(e)
+        {
+          var id=this.id;
+          // console.log(id);
+          var href=$('.like').find('a').attr('href');
+          console.log(id,href);
+          e.preventDefault();
+          $.ajax({
+            url:href,
+            data:{'likeid':id},
+            success: function(response)
+            {
+              if(response.likes)
+              {
+                $('#likebtn'+id).html("Liked");
+              }
+              else
+              {
+                $('#likebtn'+id).html("Like");
+              }
+            }
+            })
+        });
+
+  });
+
+</script>
+
+
+ {% for i in posts %}
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+    
+
+const shareButton = document.querySelector('#sharebtn{{i.post_id}}');
+
+
+
+shareButton.addEventListener('click', event => {
+  if (navigator.share) { 
+   navigator.share({
+      title: 'Beejbazaar',
+      text: '{{i.user}} - {{i.user.city}},{{i.caption}}:',
+      url: 'http://127.0.0.1:8000/socialmedia/'
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(console.error);
+    } else {
+        shareDialog.classList.add('is-open');
+    }
+});
+
+// closeButton.addEventListener('click', event => {
+//   shareDialog.classList.remove('is-open');
+// });
+})
+  
+  </script>
+  {% endfor %}
+{% endblock js %}

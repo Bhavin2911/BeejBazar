@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+
+
+	<div class="jumbotron pt-0 mt-0">
+		<div class="text-center mb-5 mt-0 pt-3">
+			<h1 class="font-weight-bold text-dark" style="letter-spacing: 5px"> ORDER HISTORY</h1>
+		</div>
+<div class="container-fluid">
+	<div class="row ">
+		<div class="col-1 col-lg-1 col-md-1 col-sm-1 text-center">
+			<b>Order ID </b>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<b>Order Details </b>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<b>Order Amount</b>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<b>Order Date</b>
+		</div>
+		<div class="col-3 col-lg-3 col-md-3 col-sm-3 text-center">
+			<p><b>Payment Method</b></p>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<b>Order Status</b>
+		</div>
+	</div>
+{% for o_data in o_data_all %}
+<hr>
+	<div class="row">
+		<div class="col-1 col-lg-1 col-md-1 col-sm-1 text-center">
+			<p>{{o_data.order_id}}</p>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<a href="/ecommerce/viewOrder/{{o_data.order_id}}" class="btn btn-dark btn-sm">Order detail</a>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<p>Rs.{{o_data.amount}}</p>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			<p>{{o_data.date.date}}</p>
+		</div>
+		<div class="col-3 col-lg-3 col-md-3 col-sm-3 text-center">
+			<p>{{o_data.payment_type}}</p>
+		</div>
+		<div class="col-2 col-lg-2 col-md-2 col-sm-2 text-center">
+			{% if o_data.order_tracker_id.order_tracker_id == 3 %}
+				<div class="">
+				<a class="btn btn-success btn-sm" href="/ecommerce/orderTracker/{{o_data.order_id}}">{{o_data.order_tracker_id}}</a>
+				</div>
+			{% else %}
+				<div class="">
+				<a class="btn btn-success btn-sm" href="/ecommerce/orderTracker/{{o_data.order_id}}">{{o_data.order_tracker_id}}</a>
+				</div>
+			{% endif %}
+			<!-- <a href="/ecommerce/orderTracker/{{o_data.order_tracker_id.order_tracker_id}}" class="btn btn-success btn-sm font-weight-bold">Track Your Order</a> -->
+		</div>
+	</div>
+{% endfor %}
+</div>
+	</div>
+{% endblock body %}

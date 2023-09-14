@@ -1,0 +1,81 @@
+#header{
+	height:50px;
+	background : #035715;
+	color:#fff;
+
+}
+#header a:link  {
+	font-size: 13px
+}
+#branding h1{
+	margin: 0 20px 0px 12px;
+    font-weight: 500;
+    font-size: 35px;
+    color: #fff !important;
+}
+.module caption{
+	background: #035715; 
+}
+
+a:link, a:visited {
+    color: #035715;
+    text-decoration: none;
+}
+
+th a:link, a:visited {
+    color: #035715;
+    text-decoration: none;
+}
+
+div.breadcrumbs {
+    background: #059424;
+    }
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #035715;
+    }    
+
+
+.button:active, input[type=submit]:active, input[type=button]:active,button:focus ,input[type=submit]:focus,input[type=button]:focus, .button:hover ,input[type=submit]:hover,input[type=button]:hover {
+     background: #059424;;
+    }    
+
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #059424;
+}    
+
+.button.default:active, input[type=submit].default:active, .button.default:focus ,input[type=submit].default:focus, .button.default:hover ,input[type=submit].default:hover{
+     background: #035715;
+    }    
+
+
+.file-upload a {
+    font-weight: normal;
+    color: #035715;
+    font-size: 14px;
+}
+
+.object-tools a.addlink:focus,a.addlink:hover {
+    background-color: #059424;
+    background-image: url(../img/tooltag-add.svg);
+}
+
+.object-tools a.historylink:focus,a.historylink:hover {
+    background-color: #059424;
+}
+
+
+
+/*search user btn */
+
+#toolbar .changelist-search input[type="submit"] {
+    border: 1px solid #06ac2a;
+    padding: 4px 12px;
+    margin: 0;
+    vertical-align: middle;
+    background: #035715 !important;
+    box-shadow: 0 -15px 20px -10px rgb(0 0 0 / 15%) inset;
+    cursor: pointer;
+    color: #fff;
+}    

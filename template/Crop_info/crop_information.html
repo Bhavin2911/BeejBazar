@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+.crop_info
+{
+	background-color:#f2f2f2;
+	border-radius:5%;
+
+}
+.crop_name
+{
+	font-size:14px;
+	height:20px;
+	padding:7px;
+	padding-bottom:20px;
+
+	
+}
+{% endblock css %}
+
+{% block body %}
+<div class="container mt-3 mb-5 text-center">
+	<div class="row ">
+		<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			<div class="card crop_info">
+				
+				<img src="{% static 'project_images/sesame.jpg '%}" style="border-radius: 5%;" >
+				<div class="card-body text-center crop_name">
+					<a href="/crop_info/sesame_view" style="color: black;">તલ	</a>		
+				</div></a>
+			</div>
+		</div>
+			<div class="col-lg-4 col-4 col-md-4 col-sm-4 ">
+			<div class="card crop_info">
+				<img src="{% static 'project_images/cumin.jpg '%}" style="border-radius: 5%;" >
+				<div class="card-body text-center crop_name">
+					<a href="/crop_info/cumin_view" style="color: black;">જીરું</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-4 col-md-4 col-sm-4 ">
+			<div class="card crop_info">
+				<img src="{% static 'project_images/millet.jpg '%}" style="border-radius: 5%;" >
+				<div class="card-body text-center crop_name">
+					<a href="/crop_info/millet_view" style="color: black;"> બાજરી</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+
+	
+
+<div class="row mt-3">
+	
+				<div class="col-lg-4 col-4 col-md-4 col-sm-4 ">
+			<div class="card crop_info">
+				<img src="{% static 'project_images/wheat.jpg '%}" style="border-radius: 5%;" >
+				<div class="card-body text-center crop_name">
+					 <a href="/crop_info/wheat_view" style="color:black;">ઘઉં</a>
+				</div>
+			</div>
+		</div>
+
+</div>
+
+</div>
+
+{% endblock body %}

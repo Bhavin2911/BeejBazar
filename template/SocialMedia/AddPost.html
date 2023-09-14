@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css%}
+
+.post_div{
+	width:450px;
+}
+
+a{
+	text-decoration:none!important;
+
+}
+
+{% endblock css%}
+
+  {% block head_content %}
+<!-- demo styles -->
+    <link rel="stylesheet" href="{% static 'userpage/zuck.js-master/demo/style.css' %}">
+
+    <!-- lib styles -->
+    <link rel="stylesheet" href="{% static 'userpage/zuck.js-master/dist/zuck.min.css' %}">
+    
+    <!-- lib skins -->
+    <link rel="stylesheet" href="{% static 'userpage/zuck.js-master/dist/skins/snapgram.css' %}">
+
+  {% endblock head_content %}
+
+{% block body %}
+
+<div class="container text-center ">
+  
+<button type="button" class="btn btn-outline-success  mt-2 mb-2" data-toggle="modal" data-target="#postModal">
+  Add Post
+</button>
+</div>
+
+
+<!--post Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalTitle">Let`s Post Here</h5>
+        
+      </div>
+      <div class="modal-body">
+ 	<form action="/socialmedia/handle_post" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+  <div class="form-group">
+    <label for="image">Image :</label>
+    <input type="file" name="image" id="image" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="Caption">Caption :</label>
+    <textarea type="textarea" class="form-control" name="caption" id="caption" cols='55' rows='10' required>
+    </textarea>
+  </div>
+  <hr size="30px">
+  <button type="submit" class="btn btn-success"> Post</button>
+  <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Close</button>
+</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% for i in posts %}
+<div class="container my-4 text-center col-lg-4 col-md-6 col-sm-6 " id=''>
+	<div class="card" >
+		<h5 class="card-header">
+			<span>
+			<img src="{% static 'project_images/logo-pre.png' %}" class="rounded float-left d-block" style="width: 40px">
+			</span>
+			<a href="{% url 'user_profile' i.user %}" class="text-success float-left ml-2">{{i.user}} </a>
+      <small class="float-right text-muted">{{i.date.date}}</small>
+      </h5>
+		<div class="card-body">
+			<h5 class="card-text">{{i.caption}}</h5>
+		{% if i.image %}	
+			<img src="{{i.image.url}}" style="width: 100%" >
+		{% endif %}
+			<hr size: 30px>
+      <div class=" card-footer pr-0 pl-0">
+        
+			<button class="btn btn-success	like " id="{{ i.post_id }}">
+        {% if i in liked_post %}
+				<a href="/socialmedia/like_dislike_post"  style="color:white;" id="likebtn{{i.post_id}}">Liked</a>
+        {% else %}
+        <a href="/socialmedia/like_dislike_post"  style="color:white;" id="likebtn{{i.post_id}}">Like</a>
+        {% endif %}
+			</button>
+
+			<a href="/socialmedia/postcomment/{{i.post_id}}" class=" btn btn-warning">Comment</a>
+<!-- 			<a href="#" class="btn btn-info mx-2">Repost</a>
+ -->			
+			<a id="sharebtn{{i.post_id}}" class="btn btn-primary text-light">Share</a>
+      </div>
+			
+		</div>		
+	</div>
+</div>
+
+{% endfor %}
+{% endblock body %}
+    <!-- <script src="{% static 'userpage/zuck.js-master/dist/zuck.min.js' %}"></script>
+    <script src="{% static 'userpage/zuck.js-master/demo/script.js' %}"></script> -->
+{% block js %}
+  <script>
+    $(document).ready(function()
+    {
+        $(".like").click(function(e)
+        {
+          var id=this.id;
+          // console.log(id);
+          var href=$('.like').find('a').attr('href');
+          console.log(id,href);
+          e.preventDefault();
+          $.ajax({
+            url:href,
+            data:{'likeid':id},
+            success: function(response)
+            {
+              if(response.likes)
+              {
+                $('#likebtn'+id).html("Liked");
+              }
+              else
+              {
+                $('#likebtn'+id).html("Like");
+              }
+            }
+            })
+        });
+    });
+    	
+  </script>
+ 
+ {% for i in posts %}
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+    
+
+const shareButton = document.querySelector('#sharebtn{{i.post_id}}');
+
+
+
+shareButton.addEventListener('click', event => {
+  if (navigator.share) { 
+   navigator.share({
+      title: 'Beejbazaar',
+      text: '{{i.user}} - {{i.user.city}},{{i.caption}}:',
+      url: 'http://127.0.0.1:8000/socialmedia/'
+    }).then(() => {
+      console.log('Thanks for sharing!');
+    })
+    .catch(console.error);
+    } else {
+        shareDialog.classList.add('is-open');
+    }
+});
+
+// closeButton.addEventListener('click', event => {
+//   shareDialog.classList.remove('is-open');
+// });
+})
+  
+  </script>
+  {% endfor %}
+ {% endblock js %}
+ 

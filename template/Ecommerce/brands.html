@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class=" mb-5">
+        
+            <div class="container">
+               <!--  <div class="row">
+                {% for brand in allbrands %}
+
+                    <div class="item col-lg-3">
+                        <div class="card brandcard text-center" >
+                        	<a href="/ecommerce/brandpro/{{brand.brand_id}}">
+                            <img src="{{brand.brand_image.url}}"  height="200px" width="200px" class="card-img-top">
+                       		</a>
+                            <h4>{{brand.brand_name}}</h4>
+                        </div>
+                    </div>
+                {% endfor %}    
+                </div>    
+            </div> -->
+
+
+
+<div class="mb-5 ">
+        <h1 class="text-center " style="color:#035715; letter-spacing: 5px;font-weight: 600;font-size:50px;" !important >BRANDS</h1>
+    </div>
+    <div id="product-list" class="row">
+        
+        {% for brand in allbrands %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="category-products">
+                <div class="item">
+                    <div class="image mt-2 mb-2">
+                        <a href="/ecommerce/brandpro/{{brand.brand_id}}">
+                            <img src='{{brand.brand_image.url}}' class="img-responsive"  height="200px" width="200px"></a>
+                    </div>
+                    <div class="category-title"><h4><b>{{brand.brand_name}}</b></h4></div>
+                   <!--  <div class=""><span style='font-size:14px;'>MRP:</span>&nbsp;&#x20b9; <b>{{prods.Price}}</b> </div>
+
+                    <div class="" style="color:#035715;font-size:11px;">(Inclusive of All Taxes)</div>
+
+                    <div class="actions">
+                        <a href='#' class="button btn-cart btn btn-primary"><i class="fa fa-shopping-cart"></i><span class="action-text">Add to Cart</span></a>
+                        <a id="LVSubcategory_ctrl0_lbAddToWishList_0" class="btn btn-primary" href="#"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</section>    
+
+{% endblock %}

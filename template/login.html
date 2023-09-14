@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% load static%}
+ 
+{% block css %}
+
+.logcon{
+	padding-bottom:600px;  
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url({% static 'project_images/registration.jpg' %}) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:relative;
+    
+}
+.login-box{
+    width: 320px;
+    height: 440px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login-box input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #035715;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+.login-box input[type="password"]{
+ position:relative;
+}
+
+.eye{
+    position:absolute;
+    color:   #cccccc;
+    font-size:22px
+}
+#eye{
+    cursor:pointer;
+    margin-left: -30px;
+    margin-top: 9px;
+}
+
+
+.login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #035715;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #e6e6e6;
+    color: #000;
+    transition:0.3s;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+.login-box a:hover
+{
+    color: #39dc79;
+}
+
+{% endblock css %}
+
+{% block body %}
+<div class="logcon">
+<!-- 	<img src="{% static 'project_images/registration.jpg' %}" class="loimg">
+ --> <div class="login-box">
+    <img src="{% static 'project_images/user.png' %}" class="avatar">
+        <h1 style="font-size: 40px; letter-spacing: 5px"><b>LOGIN</b> </h1>
+            <form action="/account/handlelog" method="post">
+                {% csrf_token %}
+            <p>Username :</p>
+            <input type="text" name="loginusername" placeholder="Enter Username">
+            <p>Password :</p>
+            <input type="password" name="loginpassword" placeholder="Enter Password" id="password"><span class="eye"><i class="fa fa-eye-slash" id="eye"></i></span>
+            <input type="submit" name="submit">
+            <div class="mt-3">
+            <a href="/account/password_reset" class="mb-2">Forget Password ?</a>
+            </div>   
+            <div class="mt-3">    
+            <a href="/account/" >Don't have an account ?</a>    
+            </div>
+            </form>
+        
+        
+        </div>
+</div>
+
+{% endblock body %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+    
+    $('#eye').click(function(){
+
+        if($(this).hasClass('fa-eye-slash')){
+
+            $(this).removeClass('fa-eye-slash');
+            $(this).addClass('fa-eye');
+            $('#password').attr('type','text');
+
+        }else{
+
+            $(this).removeClass('fa-eye');
+            $(this).addClass('fa-eye-slash');
+            $('#password').attr('type','password');
+
+        }
+    });
+
+});
+</script>
+{% endblock js %}
+

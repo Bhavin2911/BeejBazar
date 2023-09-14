@@ -1,0 +1,31 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+	path('<int:category_id>',views.catepro,name='catepro'),
+	path('brands',views.brands,name='brands'),
+	path('brandpro/<int:brand_id>',views.brandpro,name='brandpro'),
+	path('products',views.products,name='products'),
+	path('search_pro',views.search_pro,name='search_pro'),
+	path('prodview/<int:proid>',views.prodview,name='prodview'),
+	path('checkOut',views.checkOut,name='checkOut'),
+	path('about',views.about,name='about'),
+	path('gopniya',views.gopniya,name='gopniya'),
+	path('terms',views.terms,name='terms'),
+	path('contact',views.contact,name='contact'),
+	path('add_wishlist',views.add_wishlist,name='add_wishlist'),
+	path('del_wishlist',views.del_wishlist,name='del_wishlist'),
+	path('show_wishlist',views.show_wishlist,name='show_wishlist'),
+	# path('del_wishlist/<int:dwid>',views.del_wishlist,name='del_wishlist'),
+	path('addCart_delwishlist/<int:adwid>',views.addCart_delwishlist,name='addCart_delwishlist'),
+	path('ConfirmOrder/<int:oid>',views.ConfirmOrder,name='ConfirmOrder'),
+	path('viewOrder/<int:oid>',views.viewOrder,name='viewOrder'),
+	path('orderHistory',views.orderHistory,name='orderHistory'),
+	path('orderTracker/<int:oid>',views.orderTracker,name='orderTracker'),
+	path('product_reviews',views.product_reviews,name='product_reviews'),
+	path('add_cart',views.add_cart,name='add_cart'),
+	path('cart_show',views.cart_show,name='cart_show'),
+	path('del_cart',views.del_cart,name='del_cart'),
+	path('plus_cart',views.plus_cart,name='plus_cart'),
+	path('minus_cart',views.minus_cart,name='minus_cart'),
+]

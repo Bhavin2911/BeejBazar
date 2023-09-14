@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+ {% load static %}
+
+  {% block css%}
+
+ 
+ {% endblock css%}
+ 
+ {% block body%}
+
+
+<div class="container">
+    <div class="mb-5 ">
+        <h1 class="text-center " style="color:#035715; letter-spacing: 5px;font-weight: 600;font-size:50px;" !important >PRODUCTS</h1>
+    </div>
+    <div id="product-list" class="row">
+        {% for prods in allprods %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="category-products">
+                <div class="item">
+                    <div class="image mt-2 mb-2">
+                        <a href="/ecommerce/prodview/{{prods.product_id}}">
+                            <img src='{{prods.product_image.url}}' class="img-responsive" style="width: 200px;height: 230px">
+                        </a>
+                    </div>
+                    <div class="category-title">{{prods.product_name}}</div>
+                    <div class=""><span style='font-size:14px;'>MRP:</span>&nbsp;&#x20b9; <b>{{prods.Price}}</b> </div>
+
+                    <div class="" style="color:#035715;font-size:11px;">(Inclusive of All Taxes)</div>
+
+                    <!-- <div class="category-size">Available size(s) : 180 gm</div> -->
+                    <div class="actions">
+
+
+
+                {% if user.is_authenticated %}
+                        <!-- <a class="btn btn-primary wishlist-btn" href="/ecommerce/add_wishlist/{{prods.product_id}}"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a> -->
+                       <button class="button btn-cart btn btn-success cartAdd" id="{{prods.product_id}}">
+                                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                                </button> 
+                        
+                        <a class="btn btn-success wishlist-btn" id="{{prods.product_id}}"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a>
+                        
+                        {% else %}
+                       <button class="button btn-cart btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Login Required">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                           
+                        </button>
+                        <a class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Login Required"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+
+
+  //1.jyare ekpun wishlist ma na hoi
+  //2.jyare elem wishlist ma hoi
+     // ema fill thayale hoi eni shivay na badha a tag kadhi nakhbana
+    //  i ="{{allprods}}";
+    //  console.log(i);
+
+
+    $(function(){
+
+        $(".wishlist-btn").click(function(){
+            var wid = $(this).attr('id');
+            // var child_el =$(this).find('i');
+            var span_ele = $(this).find('.action-text');
+    
+        // if(child_el.is('.fa-heart-o'))
+             // {
+                // console.log(wid);
+                $.ajax({
+                url:'/ecommerce/add_wishlist',
+                data:
+                {
+                  'add_wishlist_id':wid
+                },
+                   success: function (response) {
+                    if (response.status == 'Save'){
+                        // child_el.toggleClass('fa-heart-o fa-heart');
+                        // span_ele.html("Remove from wishlist");
+                        showToast("Product successfully add to your wishlist");
+                    }
+                    if(response.status == 0){
+                        showToast("This Product is already in your wishlist");
+                    }
+                    
+                       // location.reload()
+
+                   },
+                   
+                  });
+
+            // }
+            // else
+            // {
+
+                // $.ajax({
+                // url:'/ecommerce/del_wishlist',
+                // data:
+                // {
+                //   'del_wishlist_id':wid
+                // },
+                //    success: function (response) {
+                //     if(response.status == 'delete'){
+
+                //      span_ele.html("Add to wishlist");
+                //      // child_el.toggleClass('fa-heart fa-heart-o');
+                //      showToast("Product successfully delete from your wishlist");
+                //     }
+                    // alert(response.success);
+                       // location.reload()
+    //                    console.log("delete");
+    //                 // child_el.html("");
+                    // span_ele = $(this).find('.action-text');
+                  //  },
+                  
+                  // });
+             
+
+
+
+            // }
+        });        
+    });
+
+
+    // cart
+
+   
+
+            // }
+            // else
+            // {
+
+                // $.ajax({
+                // url:'/ecommerce/del_wishlist',
+                // data:
+                // {
+                //   'del_wishlist_id':wid
+                // },
+                //    success: function (response) {
+                //     if(response.status == 'delete'){
+
+                //      span_ele.html("Add to wishlist");
+                //      // child_el.toggleClass('fa-heart fa-heart-o');
+                //      showToast("Product successfully delete from your wishlist");
+                //     }
+                    // alert(response.success);
+                       // location.reload()
+    //                    console.log("delete");
+    //                 // child_el.html("");
+                    // span_ele = $(this).find('.action-text');
+                  //  },
+                  
+                  // });
+             
+
+
+
+            // }
+    //     });        
+    // });
+
+// console.log({{request.path}});
+
+
+</script>
+
+
+
+
+{% endblock body%}

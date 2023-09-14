@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css  %}
+{% endblock css  %}
+
+{% block body  %}
+<div class="container">
+	<div class="mb-5">
+	<h2>Search Results : </h2>
+	</div>
+  {% if allpro|length < 1 %}
+  <p class="font-weight-bold text-danger">No Search Result</p><br>
+  <h5>Your search result  <b> {{query}} </b> did not match any Document.<br></h5>
+  <h4>Suggestions :</h4>
+  <ul class="mt-3 mb-3">
+    <li>Try different Keywords.</li>
+    <li>Try fewer Keywords.</li>
+    <li>Try more general Keywords.</li>
+  </ul>
+  
+  {% endif %}
+    <div id="product-list" class="row">
+        
+{% for prods in allpro %}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="category-products">
+                <div class="item">
+                    <div class="image mt-2 mb-2">
+                        <a href="/ecommerce/prodview/{{prods.product_id}}">
+                            <img src='{{prods.product_image.url}}' class="img-responsive" style="width: 200px;height: 230px"></a>
+                    </div>
+                    <div class="category-title">{{prods.product_name}}</div>
+                    <div class=""><span style='font-size:14px;'>MRP:</span>&nbsp;&#x20b9; <b>{{prods.Price}}</b> </div>
+
+                    <div class="" style="color:#035715;font-size:11px;">(Inclusive of All Taxes)</div>
+
+                    <!-- <div class="category-size">Available size(s) : 180 gm</div> -->
+                    <div class="actions">
+
+
+                        <button class="button btn-cart btn btn-success cartAdd" id="{{prods.product_id}}">
+                                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                                </button> 
+                                               {% if user.is_authenticated %}
+                        <a class="btn btn-success wishlist-btn" id="{{prods.product_id}}"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a>
+                        {% else %}
+                        <a class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Login Required"><i class="fa fa-heart"></i><span class="action-text">Add to Wishlist</span></a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+</div>
+</div>
+{% endblock body  %}

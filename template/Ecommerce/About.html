@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block companyactive %} active {% endblock companyactive %}
+{% load static%}
+
+
+
+
+    {% block css %}
+
+
+<!-- .footer-area {
+    margin-top: 50px;
+} -->
+
+.about-section {
+    background: url({% static 'project_images/registration.jpg' %}) no-repeat left;
+    background-size: 55%;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+.inner-container {
+    width: 55%;
+    float: right;
+    /* background-color: #212221; */
+    background: linear-gradient(to right, #212221, #035715);
+    padding: 50px;
+}
+
+.inner-container h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    text-align:center;
+     letter-spacing: 5px;
+}
+
+.text {
+    font-size: 16px;
+    color: #fff;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.skills {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+}
+
+@media screen and (max-width:1200px) {
+    .inner-container {
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .about-section {
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .about-section {
+        padding: 0;
+    }
+    .inner-container {
+        padding: 60px;
+    }
+}
+    {% endblock css %}
+
+    {% block body %}
+    
+    <div class="about-section " data-aos="zoom-in" data-aos-once="true" data-aos-duration="2000">
+        <div class="inner-container">
+            <div class="container">
+                
+            <h1 style="letter-spacing: 5px;">ABOUT US</h1>
+            <p class="text">
+                Beej~bazar is the Largest Bt cotton seed company in Gujarat ,which develops, produces, and markets hybrid and varietal seed products.
+            </p>
+            <p class="text">
+                In addition to conventional breeding programmes, Savan Seeds depends heavily on biotechnology to improve the quality of seeds it produces. Today the farming community considers, Savan Seeds amongst the most trusted seed companies in India owing to its intensive and rigorous research and development (R & D) efforts, coupled with its stringent quality control processes. We provide the latest technology to the farmers through our extensive marketing network that comprises of its corporate office in Ahmedabad, 1 regional offices, 7 C&F agents, approximately 500 distributors dealers spread across 1 states of the country as of December, 2020.
+            </p>
+            <p class="text">
+                Beej~bazar has emerged to be the most preferred seed brands in Gujarat and is currently the largest Bt cotton Seed Company in the Gujarat. In line with its vision of providing farmers with world class cotton seeds at affordable prices, today, the company also provides complementary services that help farmers leverage the relationship with the company to the fullest extent. As part of its services, Savan Seeds provides extension services to the farmers, which include a package of product awareness programs, crop demonstration and crop risk awareness programs.
+            </p>
+            <!-- <div class="skills">
+                <span>100% Organic</span>
+                <span>Premium Quality</span>
+                <span>Organic Farm</span>
+            </div> -->
+        </div>
+    </div>
+            </div>
+
+        {% endblock body %}

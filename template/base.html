@@ -1,0 +1,1064 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Beej~Bazar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="icon" href="{% static 'project_images/favicon.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.min.css' %}">
+        {% block head_content %} {% endblock head_content %}
+    <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <style type="text/css">
+        .goog-te-banner-frame{display: none;}
+        body{top:0px !important;}
+        .goog-te-gadget img{display: none}
+        .goog-te-gadget-simple{background-color:transparent !important;border:none !important;font-size: 14px!important;font-weight: bold}
+        .goog-te-gadget-simple .goog-te-menu-value span{border-left:none !important;}
+    </style>
+<script type="text/javascript">
+// function googleTranslateElementInit() {
+//   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+// }
+function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            includedLanguages: 'en,gu,hi,ta,te',
+                            autoDisplay: true,
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+
+
+</script>
+<script>
+                    $('document').ready(function () {
+                        $('#google_translate_element').on("click", function () {
+
+                        // Change font family and color
+                        $("iframe").contents().find(".goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div").css({'color': '#FFF','background-color': '#035715','font-size':'13px','font-family':'Conv_GothamBook',});
+                        // Change hover effects  #035715 = white
+                        $("iframe").contents().find(".goog-te-menu2-item div").hover(function () {
+                            $(this).css('background-color', '#035715').find('span.text').css('color', '#fcdc25',);
+                        }, function () {
+                            $(this).css('background-color', '#035715').find('span.text').css('color', '#FFF');
+                        });
+
+                        // Change Google's default blue border
+                        $("iframe").contents().find('.goog-te-menu2').css({'border': '1px solid #17548d','background-color': '#035715','padding':'2px','font-size':'13px','font-family':'Conv_GothamBook',});
+                        $("iframe").contents().find('.skiptranslate div, .goog-te-gadget-simple').addClass('dropdown');
+                        // Change the iframe's box shadow
+                        $("iframe").contents().find(".goog-te-menu2-item-selected div, .goog-te-menu2-item-selected:link div, .goog-te-menu2-item-selected:visited div, .goog-te-menu2-item-selected:active div").css({'color' : '#fcdc25','font-size':'13px','font-family':'Conv_GothamBook',});
+
+                        $("iframe").contents().find(".goog-te-menu2-item-selected").css({'text-align': 'center','border-bottom': '1px solid #206190 !important','display': 'block','border-bottom': '1px solid #206190','font-size':'13px','font-family':'Conv_GothamBook',});
+                        $("iframe").contents().find(".goog-te-menu2-item").css({'text-align': 'center','border-bottom': '1px solid #206190 !important','display': 'block','border-bottom': '1px solid #206190','font-size':'13px','font-family':'Conv_GothamBook',});
+                        $(".goog-te-menu-frame").css({'position': 'absolute','top': '40px;','-moz-box-shadow': '0px 0px 0px #0e4373','-webkit-box-shadow': '0px 0px 0px #0e4373','box-shadow': '0px 0px 0px #0e4373','font-size':'13px','font-family':'Conv_GothamBook',});
+                        });
+                    });
+
+                </script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        {% block js %}
+        {% endblock js %}
+    
+    
+
+    <style type="text/css">
+        {% block css%}
+        {% endblock css%}
+            .catcard:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    transition:0.2s;
+    }
+       /* .logo-img:hover{
+            transform: scale(1.5); 
+            transition: 0.5s;
+        }*/
+        /*dropdwan option blue to green*/
+        .dropdown-item.active, .dropdown-item:active{
+          color: #fff;
+          text-decoration: none;
+          background-color: #059424;
+        }
+
+        #top-header{
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+        .dropdown:hover .dropdown-menu{
+            display: block !important;
+        }
+        .dropdown-menu{
+            margin-top: 0px !important;
+        }
+        .nav-item{
+            padding:0px 5px !important;   
+        }
+        .w-100{
+            padding:0px;
+        }
+        .preloader .preloader-img img {
+            max-width: 90px!important;
+        }
+
+        /*products*/
+        .category-products .item {
+            text-align: center;
+        }
+        
+        .actions {
+            margin-bottom: 14px;
+        }
+        
+        .actions .btn {
+            white-space: nowrap;
+            padding: 6px 12px;
+            margin: 10px 0;
+            width: 40px;
+            color: #fff;
+            margin-right: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease-in-out 0s;
+            -webkit-transition: all 0.4s ease-in-out 0s;
+            -moz-transition: all 0.4s ease-in-out 0s;
+            -o-transition: all 0.4s ease-in-out 0s;
+            -ms-transition: all 0.4s ease-in-out 0s;
+            overflow: hidden;
+            background-color: #035715;
+            border-color: #035715;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .category-products .item .actions .btn:hover {
+            background-color: #035715;
+            border-color: #035715;
+            color: #fff;
+            display: inline-block;
+        }
+        
+        .actions .btn i {
+            margin-right: 13px;
+        }
+        
+        .actions .btn .action-text {
+            text-indent: 100px;
+            width: 0;
+            height: 32px;
+            overflow: hidden;
+
+            transition: all 0.4s ease-in-out 0s;
+            -o-transition: all 0.4s ease-in-out 0s;
+            -webkit-transition: all 0.4s ease-in-out 0s;
+            -moz-transition: all 0.4s ease-in-out 0s;
+            -ms-transition: all 0.4s ease-in-out 0s;
+        }
+        
+        .actions .btn:hover {
+            width: 170px;
+        }
+        
+        .actions .btn:hover .action-text {
+            width: 100px;
+            text-indent: 0;
+        }
+        
+        .category-products {
+            border: 1px solid #ddd;
+            transition: all 0.4s ease-in-out 0s;
+            -o-transition: all 0.4s ease-in-out 0s;
+            -webkit-transition: all 0.4s ease-in-out 0s;
+            -moz-transition: all 0.4s ease-in-out 0s;
+            -ms-transition: all 0.4s ease-in-out 0s;
+            margin-bottom: 30px;
+        }
+        
+        .category-products:hover {
+            -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+            border: 1px solid #999999;
+            transition: all 0.4s ease-in-out 0s;
+            -o-transition: all 0.4s ease-in-out 0s;
+            -webkit-transition: all 0.4s ease-in-out 0s;
+            -moz-transition: all 0.4s ease-in-out 0s;
+            -ms-transition: all 0.4s ease-in-out 0s;
+        }
+        
+        .category-products .item .image {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            transition: all 0.5s ease 0s;
+            -moz-transition: all 0.5s ease 0s;
+            -webkit-transition: all 0.5s ease 0s;
+            -ms-transition: all 0.5s ease 0s;
+            -o-transition: all 0.5s ease 0s;
+        }
+        
+        .category-products .item .image img {
+            transition: all 0.5s ease 0s;
+            -moz-transition: all 0.5s ease 0s;
+            -webkit-transition: all 0.5s ease 0s;
+            -ms-transition: all 0.5s ease 0s;
+            -o-transition: all 0.5s ease 0s;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .category-products:hover .item .image img:hover {
+            transform: scale(1.1) rotate(-1.5deg);
+            -webkit-transform: scale(1.1) rotate(-1.5deg);
+            -moz-transform: scale(1.1) rotate(-1.5deg);
+            -ms-transform: scale(1.1) rotate(-1.5deg);
+            -o-transform: scale(1.1) rotate(-1.5deg);
+        }
+        
+        .category-title {
+            font-weight: 600;
+            color: #035715;
+            margin-bottom: 6px;
+            width: 100%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .category-price {
+            font-weight: 600;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+        
+        .category-size {
+            font-size: 13px;
+            font-weight: normal;
+            color: #999999;
+            margin-bottom: 6px;
+            width: 100%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+/*cart*/
+.iconCart{
+    cursor: pointer;
+    position: relative;
+    font-size: 32px;
+}
+.cartmain p{
+    position: absolute;
+    top: -1px;
+    right: 105px;
+    font-size: 12px;
+    font-weight:bold;
+    background-color: #000;
+    padding: 0px 5px;
+    border-radius: 50%;
+}
+.cbtn{
+    padding: 4px 8px 4px 8px;
+    line-height: 1;
+}
+.qtd{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+/*cart toast message*/
+#toast{
+    min-width: 300px;
+    position: fixed;
+    bottom: 30px;
+    left:45%;
+    margin-left: -120px;
+    background: #333;
+    padding:15px;
+    color: #fff;
+    text-align:center;
+    z-index: 1;
+    font-size:18px;
+    visibility: hidden;
+    box-shadow: 0px 0px 100px #000;
+} 
+#toast.display{
+    visibility: visible;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+@keyframes fadeIn{
+    from{
+        bottom: 0;
+        opacity:0;
+    }
+    to{
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+@keyframes fadeOut{
+    from{
+        bottom: 30px;
+        opacity:1;
+    }
+    to{
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    }
+@media (max-width: 1200px) {
+    .navbar-nav{
+        text-align: center !important; 
+    }
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    
+}
+
+}
+
+/*for nootify*/
+
+.notification {
+
+    position: relative;
+}
+
+.notification:hover {
+  color: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  padding: 3px 5px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+</style>    
+</head>
+
+<body id="body" style="top:0px">
+  
+<!-- Preloader -->
+  
+        <div class="preloader col-lg-12 col-md-12 col-sm-12 d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'project_images/logo-pre.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    <!-- nav1 -->
+
+    <div id="wrapper">
+        <div class="top-header header-sticky">
+            <div id="top-header">
+                <div class="container">
+                    <div class="row">
+             
+                        <div class="col-lg-2 col-md-12 mt-2 text-success">
+                            <div id="google_translate_element"></div>
+                        </div>
+
+
+                        <div class="form-inline m-auto">
+                            <form action="/ecommerce/search_pro" method="get" class=" my-lg-0 ">
+                                <input id="search-text-input" name="q_pro" class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 250px;height:34px;margin-top: 2px;" required="">
+                                <button class="btn btn-success my-sm-0" id="button-holder" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-12 text-right " id="top-header-right">
+
+                            <a href="/ecommerce/show_wishlist" class="btn btn-success" data-toggle="tooltip" title="Wish-List" style="padding: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: -5px;" !important><i class="fa fa-heart" style="font-size:26px"></i></a>
+                            
+                          {% if user.is_authenticated %}
+                            <button class="cartmain btn btn-success cb"  style="padding: 0px;margin-top: 0px;margin-bottom: 0px;margin-right: 10px;" data-toggle="modal" data-target="#cartmodal">
+                                <i class="fa fa-shopping-cart iconCart" data-toggle="tooltip" title="Cart"></i>
+                                <p class="cart-item" id="cart-item">0</p>
+                            </button> 
+                            {% else %}
+                            <button class="cartmain btn btn-success" style="padding: 0px;margin-top: 0px;margin-bottom: 0px;margin-right: 10px;">
+                                <i class="fa fa-shopping-cart iconCart" data-toggle="tooltip" title="Login Required"></i>
+                                <p class="cart-item" id="cart-item">0</p>
+                            </button>
+                            {% endif %}
+                           
+                            <a class="btn btn-success" href="/weather/" data-toggle="tooltip" data-placement="bottom" title="Weather" style="padding: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: 0px;">
+                                <img src="{% static 'project_images/weather.png' %}" style="width:35px;">
+                            </a>
+
+
+
+
+
+                            
+                            <button class="btn btn-success notification " style="padding: 0px;margin-top: 6px;">
+                                        <a class="" href="#">
+                                            <i class="fa fa-bell" style="font-size:26px;"></i>
+                                            <span class="badge">3</span>
+                                        </a>
+
+
+
+                                </button>
+                            <!-- <a href="#" class="btn btn-success" data-toggle="tooltip" title="Notification" style="padding: 0px;margin-right: 10px;margin-top: 0px;margin-bottom: -5px;" !important><i class="fa fa-bell" style="font-size:26px"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav2 -->
+            <div id="navigation">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-expand-xl navbar-light w-100">
+                            
+                                <a class="navbar-brand lg-p-t-15" href="/">
+                                    <img src="{% static 'project_images/logo-header.png' %}" class="logo-img" alt="logo" style="width: 80px;margin-bottom: 0px;">  
+                                </a>
+                            
+                            <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar2"><span class="navbar-toggler-icon"></span></button>
+                            <div class="navbar-collapse collapse w-100" id="navbar2">
+                                <ul class="navbar-nav ml-auto" id="ul1">
+                                    <li class="nav-item ">
+                                        <a class="nav-link active" href="/"> Home </a></li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Category </a>
+                                        <ul class="dropdown-menu" id="nav-d1">
+                                            {% for cat in cat %}
+                                            <li class="dropdown-item"> <a href="/ecommerce/{{cat.category_id}}"> {{cat.category_name}} </a></li>
+                                            {% endfor %}
+                                        <!--     <li class="dropdown-item"> <a href="/ecommerce/1">બિયારણ</a></li>
+                                            <li class="dropdown-item"> <a href="/ecommerce/2"> સંરક્ષણ  </a></li>
+                                            <li class="dropdown-item"> <a href="/ecommerce/3">પોષણ</a></li>
+                                            <li class="dropdown-item"> <a href="/ecommerce/4"> હાર્ડવેર</a></li>
+                                         --></ul>
+                                    </li>
+                                    <li class="nav-item "><a class="nav-link" href="/ecommerce/brands"> Brands </a></li>
+                                    <li class="nav-item "><a class="nav-link" href="/ecommerce/products"> Products </a></li>
+
+                                    <li class="nav-item dropdown ">
+                                        <a class="nav-link dropdown-toggle {% block companyactive %}{% endblock companyactive %}" data-toggle="dropdown" href="#"> Company </a>
+                                        <ul class="dropdown-menu" id="nav-d1">
+                                            <li class="dropdown-item"> <a href="/ecommerce/about">About Us</a></li>
+                                            <li class="dropdown-item"> <a href="/ecommerce/contact">Contact Us</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item "><a class="nav-link" href="/crop_info/crop_info_home"> Crop ~ Information</a></li>
+                                    
+                                    <li class="nav-item "><a class="nav-link" href="/marketprice/marketprice_zone"> Market price</a></li>
+                                    <li class="nav-item "><a class="nav-link" href="/socialmedia/"> Kisan-Charcha</a></li>
+                                    <li class="nav-item dropdown ">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+                                        <ul class="dropdown-menu" id="nav-d1">
+                                            {% if user.is_authenticated%}
+                                            <li class="dropdown-item"> <a href="/socialmedia/{{request.user}}">My Profile</a></li>
+                                            <li class="dropdown-item"> <a href="/account/lgout">LogOut</a></li>
+                                            {% else %}
+                                            <li class="dropdown-item"> <a href="/account/">Registration</a></li>
+                                            <li class="dropdown-item"> <a href="/account/log">Login</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                </ul>
+                               
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show" role="alert">
+  <strong>Message : </strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+{% block  body %}
+
+{%  endblock body %}
+
+
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="jumbotron m-0 img-jumbo ">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-contact footer1" data-aos="fade-right" data-aos-once="true" data-aos-duration="2000">
+                            <h3>BeejBazar<span>.</span></h3>
+                            
+                            <p>
+                            	<i class="fa fa-map-marker mr-2 text-success"></i> : <a href="#g-map_location-link">3, Gigevpark Soc., Uttamnagar,
+                                   Ahmedabad. </a><br>
+                                <i class="fa fa-phone text-info mr-2"></i> :
+                                <a href="tel:6354383150">+91 6354383150</a><br>
+                                <i class="fa fa-envelope text-warning mr-2"></i>:
+                                <a href="mailto:infoonine70@gmail.com">infoonine70@gmail.com</a>   
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links footer2" data-aos="fade-up" data-aos-once="true" data-aos-duration="2000">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/">Home</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/ecommerce/products">Products</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/crop_info/crop_info_home">Crop-Information</a></li>
+                                <li><i class="fa fa-chevron-right"></i><a href="/marketprice/marketprice_zone"> Market price</a></li>
+                                 <li><i class="fa fa-chevron-right"></i> <a href="/socialmedia/">Kisan-charcha</a></li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links footer3" data-aos="fade-down" data-aos-once="true" data-aos-duration="2000">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/ecommerce/about">About us</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/ecommerce/terms">Terms of service</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="/ecommerce/gopniya">Privacy policy</a></li>
+                               
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6" >
+                            <h4>Our Social Networks</h4>
+
+                            <ul class="social-ul" >
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!-- back-to-top -->
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header" style="display:inline;">
+        <h2 class="modal-title text-muted text-center" id="cartModalLabel" style="font-weight:bold;">YOUR CART</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="cart-body">
+              
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <a href="/ecommerce/checkOut" class="btn btn-success checkout-btn">Checkout</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- cart toast messages -->
+<div id="toast">This is message</div>
+
+<script>
+    
+        // hover dropdown menu
+    $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+
+        $(".dropdown").hover(function(){
+            var dropdownMenu = $(this).children(".dropdown-menu");
+            if(dropdownMenu.is(":visible")){
+
+                dropdownMenu.parent().toggleClass("open");
+                
+            }
+        }); 
+    });
+
+     // Preloader
+    $(window).on('load', function() {
+        $('.preloader').delay(100).fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+
+
+
+
+//  $(function(){
+
+//         $(".cart-btn").click(function(){
+//             var cid = $(this).attr('id');
+//             console.log(cid);
+//             // var child_el =$(this).find('i');
+    
+//         // if(child_el.is('.fa-heart-o'))
+//              // {
+//                 // console.log(wid);
+//                 $.ajax({
+//                 url:'/ecommerce/add_cart',
+//                 data:
+//                 {
+//                   'add_cart_id':cid
+//                 },
+//                    success: function (response) {
+//                     if (response.status == 1){
+//                         // child_el.toggleClass('fa-heart-o fa-heart');
+//                         // span_ele.html("Remove from wishlist");
+//                         showToast("Product successfully add to your Cart");
+//                     }
+//                     if(response.status == 0){
+//                         showToast("This Product is already in your Cart");
+//                     }
+                    
+//                        // location.reload()
+
+//                    },
+                   
+//                   });
+//                   });
+
+// });
+
+
+// document.querySelector(".cartmain").addEventListener("click", function (e){
+    
+//     e.preventDefault();
+//     let cartitems = [{% for item in cartitems %}
+//     {{item.value}},
+//     {% endfor %}
+ 
+//     ];
+//     console.log(cartitems);    
+
+// });          
+
+
+
+    // cart logic
+
+    // function add_to_cart(pid,pname,price)
+    // {
+    //     let cart = localStorage.getItem("cart");
+
+    
+    //     if(cart == null)
+    //     {
+    //         //no cart yet 
+    //         let products=[];
+    //         let product = {productId:pid,productName:pname,productQuantity:1,productPrice:price};
+    //         products.push(product);
+    //         localStorage.setItem("cart",JSON.stringify(products));
+    //         showToast(" Product is added to cart ");
+    //     }
+    //     else
+    //     {
+    //         // cart is already present
+    //         let pcart = JSON.parse(cart);
+
+    //         let oldProduct = pcart.find((item) => item.productId == pid);
+    //         if(oldProduct)
+    //         {
+    //             //we have to increse the quantity
+    //             oldProduct.productQuantity =oldProduct.productQuantity+1;
+    //             pcart.map((item) => {
+    //                 if(item.produdctId == oldProduct.productId)
+    //                 {
+    //                     item.productQuantity = oldProduct.productQuantity;
+    //                 }
+    //             })
+    //             localStorage.setItem("cart",JSON.stringify(pcart));
+    //             showToast(oldProduct.productName + " quantity is increased , Quantity = " + oldProduct.productQuantity);
+
+    //         }
+    //         else
+    //         {
+    //             // we have add the product in cart
+    //             let product = {productId:pid,productName:pname,productQuantity:1,productPrice:price};
+    //             pcart.push(product);
+    //             localStorage.setItem("cart",JSON.stringify(pcart));
+    //             showToast(" Product is added to cart ");
+                
+    //         }
+    //     }
+
+    //     updateCart();
+    // }
+
+
+
+// function minusItem(pid,productQuantity){
+//     // showToast(" minus btn clicked ");
+//     let pcartString = localStorage.getItem("cart");
+//     let minuscart = JSON.parse(pcartString);
+//     let oldP = minuscart.find((item) => item.productId == pid);
+   
+//     if(oldP)
+//     {
+//         oldP.productQuantity -= 1;
+
+//         if(oldP.productQuantity <= 0){
+//             deleteItem(oldP.productId);
+//         }
+//         else{
+//             minuscart.map((item) => {
+//                 if(item.produdctId == oldP.productId)
+//                 {
+//                     item.productQuantity = oldP.productQuantity;
+//                 }
+//             })
+//             localStorage.setItem("cart",JSON.stringify(minuscart));
+//             showToast(oldP.productName + " quantity is decreased , Quantity = " + oldP.productQuantity);                
+//         }
+
+
+//     }
+//     updateCart();
+// }
+
+// function plusItem(pid,productQuantity){
+//     // showToast(" plus btn clicked ");
+//    let pcartString = localStorage.getItem("cart");
+//    let pluscart = JSON.parse(pcartString);
+//    let oldP = pluscart.find((item) => item.productId == pid);
+   
+//    if(oldP)
+//    {
+//         oldP.productQuantity += 1;
+//         pluscart.map((item) => {
+//             if(item.produdctId == oldP.productId)
+//             {
+//                 item.productQuantity = oldP.productQuantity;
+//             }
+//         })
+//         localStorage.setItem("cart",JSON.stringify(pluscart));
+//         showToast(oldP.productName + " quantity is increased , Quantity = " + oldP.productQuantity);                
+//    }
+//    updateCart();
+
+// }
+
+
+
+
+// $(document).ready(function()
+// {
+//     updateCart()
+// })
+
+
+function showToast(content){
+    $("#toast").addClass("display");
+    $("#toast").html(content);
+    setTimeout(()=> {
+        $("#toast").removeClass("display");
+    },2000);
+}
+
+
+// alert bootstrap messages fadeout after 5 sec
+
+window.setTimeout(function(){
+    $(".alert").fadeTo(500,0).slideUp(500,
+        function(){
+            $(this).remove();
+        });
+},5000);
+
+
+
+// for wishlist
+ $(function(){
+
+        $(".wishlist-btn").click(function(){
+            var wid = $(this).attr('id');
+            // var child_el =$(this).find('i');
+            var span_ele = $(this).find('.action-text');
+    
+        // if(child_el.is('.fa-heart-o'))
+             // {
+                // console.log(wid);
+                $.ajax({
+                url:'/ecommerce/add_wishlist',
+                data:
+                {
+                  'add_wishlist_id':wid
+                },
+                   success: function (response) {
+                    if (response.status == 'Save'){
+                        // child_el.toggleClass('fa-heart-o fa-heart');
+                        // span_ele.html("Remove from wishlist");
+                        showToast("Product successfully add to your wishlist");
+                    }
+                    if(response.status == 0){
+                        showToast("This Product is already in your wishlist");
+                    }
+                    
+                       // location.reload()
+
+                   },
+                   
+                  });
+
+            // }
+            // else
+            // {
+
+                // $.ajax({
+                // url:'/ecommerce/del_wishlist',
+                // data:
+                // {
+                //   'del_wishlist_id':wid
+                // },
+                //    success: function (response) {
+                //     if(response.status == 'delete'){
+
+                //      span_ele.html("Add to wishlist");
+                //      // child_el.toggleClass('fa-heart fa-heart-o');
+                //      showToast("Product successfully delete from your wishlist");
+                //     }
+                    // alert(response.success);
+                       // location.reload()
+    //                    console.log("delete");
+    //                 // child_el.html("");
+                    // span_ele = $(this).find('.action-text');
+                  //  },
+                  
+                  // });
+             
+
+
+
+            // }
+        });        
+    });
+            
+
+// update cart
+function updateCart(response){
+    let cart = response;
+    if(cart == null || cart.length == 0)
+    {
+        // console.log("cart is empty !!");
+        $(".cart-item").html("0");
+        $(".cart-body").html("<h4 class='text-muted'>Cart does not have any items</h4><a href='/ecommerce/products' class='btn btn-dark font-weight-bold mt-2' style='float: left'><i class='fa fa-arrow-left mr-2'></i>Continue Shopping</a>");
+        $(".checkout-btn").addClass('disabled');
+    }
+    else
+    { 
+
+        // $(".cart-item").html(`${cart.length}`)
+        let table = `
+            <table class='table table-md '>
+                <thead class='thead-light'>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+        `;
+        let totalQ = 0;
+        let totalprice = 0;
+        cart.map((item) => {
+            // console.log(item);
+            table += `
+                <tr id="CartI_${item.proby.product_id}">
+                        <td>${item.proby.product_name}</td>
+                        <td>${item.proby.Price}&#8377;</td>
+                        <td class="qtd">
+                        <button class="btn btn-dark cbtn cartMinus" id="${item.proby.product_id}"> - </button>
+                        ${item.quantity}
+                        <button class="btn btn-dark cbtn cartPlus" id="${item.proby.product_id}"> + </button>
+                        </td>
+                        <td>${item.quantity * item.proby.Price}&#8377;</td>
+                        <td><button class="btn btn-danger btn-sm cdbtn" id="${item.proby.product_id}"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            `
+            totalprice += item.proby.Price * item.quantity;
+            totalQ += item.quantity
+        })
+
+        table = table + `
+            <tr>
+                <td class='' colspan='5'><b>Total Price : Rs. ${totalprice}</b><td>
+            </tr>
+        </table>`
+        $(".cart-body").html(table);
+        $(".am").val(`${totalprice}`);
+        // $(".checkout-btn").attr('disabled',false);
+        $(".checkout-btn").removeClass('disabled');
+        $(".cart-item").html(`${totalQ}`);
+
+    }
+
+}
+
+
+// FOR CART
+ $(function(){
+        // for update cart
+       $(document).ready(function(){
+         // $(document).on("click", ".cb", function () {
+            
+            $.ajax({
+                url:"{% url 'cart_show' %}",
+                success: function (response) {
+                    updateCart(response);
+                }
+            });
+        });
+        
+        // for delete cart
+         $(document).on("click", ".cdbtn", function () {
+            var cdid = $(this).attr('id');
+                $.ajax({
+                url:"{% url 'del_cart' %}",
+                data:
+                {
+                  'del_cart_id':cdid
+                },
+                success: function (response){
+                    // $("#CartI_"+cdid).fadeOut();
+            // console.log(response);
+                    showToast(" Product is Remove from cart ");
+                    updateCart(response);
+                   }
+                });
+        });
+
+
+         // for delete cart
+         $(document).on("click", ".cartAdd", function () {
+            var cid = $(this).attr('id');
+                $.ajax({
+                url:"{% url 'add_cart' %}",
+                data:
+                {
+                  'add_cart_id':cid
+                },
+                success: function (response){
+                    if(response.status == 0){
+
+                        showToast(" Product is already in your cart ");
+                    }
+                    else{
+
+                        showToast(" Product is add to cart ");
+                    updateCart(response);
+                    }
+                   }
+                });
+        });
+
+                  // for plus Item cart
+         $(document).on("click", ".cartPlus", function () {
+            var cid = $(this).attr('id');
+                $.ajax({
+                url:"{% url 'plus_cart' %}",
+                data:
+                {
+                  'plus_cart_id':cid
+                },
+                success: function (response){
+                   
+                    showToast(" Product quantity is increased ");
+                    updateCart(response);
+                   
+                   }
+                });
+        });
+
+         // for Minus Item cart
+         $(document).on("click", ".cartMinus", function () {
+            var cid = $(this).attr('id');
+                $.ajax({
+                url:"{% url 'minus_cart' %}",
+                data:
+                {
+                  'minus_cart_id':cid
+                },
+                success: function (response){
+                   
+                    showToast(" Product quantity is decreased ");
+                    updateCart(response);
+                   
+                   }
+                });
+        });
+});
+    </script>
+
+
+</body>
+ 
+</html>
